@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import ProductList from "./ProductList";
 
-function App() {
+
+const App = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const [itemCount, setItemCount] = useState(5);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit task <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Product List</h1>
+      <input
+        type="number"
+        value={startIndex}
+        onChange={(e) => setStartIndex(e.target.value)}
+        placeholder="Start Index"
+      />
+      <input
+        type="number"
+        value={itemCount}
+        onChange={(e) => setItemCount(e.target.value)}
+        placeholder="Item Count"
+      />
+      <ProductList startIndex={startIndex} itemCount={itemCount} />
     </div>
   );
-}
+};
 
 export default App;
